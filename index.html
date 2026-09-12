@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17151b">
+  <meta name="description" content="Build a simple wired headphone setup and learn what each part does with Capra’s interactive beginner guide.">
+  <title>Capra’s Guide to Hi-Fi for Beginners</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#builder">Skip to the setup builder</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Capra Audio home for this guide">
+      <svg aria-hidden="true" viewBox="0 0 48 48"><path d="M8 8c8 1 13 5 16 12C27 13 32 9 40 8c0 9-4 15-11 18l4 3-4 11H19l-4-11 4-3C12 23 8 17 8 8Z"/><path d="M17 19c3 1 5 4 7 8 2-4 4-7 7-8"/></svg>
+      <span>CAPRA <b>AUDIO</b></span>
+    </a>
+    <nav aria-label="Guide sections">
+      <a href="#builder">Build a setup</a>
+      <a href="#learn">Learn the basics</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">A first wired headphone setup</p>
+      <h1 id="page-title">Hi-Fi starts with a clear signal path.</h1>
+      <p class="lede">Choose a source, add the pieces you need, and select anything on the desk to learn its job. You may already own most of a complete setup.</p>
+      <div class="chain-key" aria-label="Connection legend">
+        <span><i class="line digital"></i> Digital connection</span>
+        <span><i class="line analog"></i> Analog connection</span>
+      </div>
+    </section>
+
+    <section class="builder" id="builder" aria-labelledby="builder-title">
+      <div class="builder-head">
+        <div>
+          <p class="eyebrow">Build the chain</p>
+          <h2 id="builder-title">Your listening desk</h2>
+        </div>
+        <button class="text-button" id="reset" type="button">Reset setup</button>
+      </div>
+
+      <div class="builder-layout">
+        <div class="workspace">
+          <div class="control-bar" aria-label="Setup controls">
+            <fieldset>
+              <legend>1 · Choose your source</legend>
+              <div class="segmented" id="source-controls">
+                <button type="button" data-source="computer" aria-pressed="true">Computer</button>
+                <button type="button" data-source="phone" aria-pressed="false">Phone</button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>2 · Choose an available output</legend>
+              <div class="segmented" id="output-controls">
+                <button type="button" data-output="jack" aria-pressed="true">Headphone jack</button>
+                <button type="button" data-output="usb" aria-pressed="false">USB-C</button>
+              </div>
+            </fieldset>
+          </div>
+
+          <div id="change-notice" class="change-notice" hidden aria-live="polite"></div>
+
+          <div class="scene-frame">
+            <svg id="desk-scene" class="desk-scene" viewBox="0 0 920 520" role="group" aria-labelledby="scene-title scene-description">
+              <title id="scene-title">Interactive headphone setup on a desk</title>
+              <desc id="scene-description">A computer connects directly to wired headphones through an analog headphone cable.</desc>
+              <defs>
+                <linearGradient id="deskTop" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#594341"/><stop offset="1" stop-color="#2b2226"/></linearGradient>
+                <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#69656d"/><stop offset=".48" stop-color="#26242a"/><stop offset="1" stop-color="#111015"/></linearGradient>
+                <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5b3c83"/><stop offset=".5" stop-color="#181620"/><stop offset="1" stop-color="#0f0e13"/></linearGradient>
+                <linearGradient id="purpleMetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b38cff"/><stop offset=".4" stop-color="#7044aa"/><stop offset="1" stop-color="#38234f"/></linearGradient>
+                <radialGradient id="knob"><stop stop-color="#88838d"/><stop offset=".7" stop-color="#2b2930"/><stop offset="1" stop-color="#111015"/></radialGradient>
+                <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#08070a" flood-opacity=".45"/></filter>
+                <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+
+              <rect width="920" height="520" fill="#1b181e"/>
+              <circle cx="755" cy="92" r="156" fill="#8e5bd2" opacity=".10"/>
+              <path d="M0 386H920V520H0Z" fill="url(#deskTop)"/>
+              <path d="M0 386H920" stroke="#886b62" stroke-width="3" opacity=".65"/>
+              <path d="M74 115v265M76 115h82" stroke="#39343d" stroke-width="12" stroke-linecap="round"/>
+              <path d="M158 115l32 90" stroke="#39343d" stroke-width="8" stroke-linecap="round"/>
+              <path d="M176 199h40l-7 19h-28Z" fill="#a46be8" opacity=".55"/>
+
+              <g id="cables" aria-hidden="true"></g>
+              <g id="source-layer"></g>
+              <g id="gear-layer"></g>
+              <g id="headphones-layer"></g>
+            </svg>
+            <p class="scene-hint">Select an item on the desk to inspect it.</p>
+          </div>
+
+          <div class="signal-summary" aria-live="polite">
+            <span class="summary-label">Current signal path</span>
+            <p id="signal-path">Computer → Headphones</p>
+            <p id="signal-description" class="sr-only">A computer connects directly to wired headphones through an analog headphone cable.</p>
+          </div>
+
+          <div class="setup-chooser">
+            <div class="chooser-title">
+              <div>
+                <p class="eyebrow">3 · Shape the setup</p>
+                <h3>Choose a signal path</h3>
+              </div>
+              <button type="button" class="remove-button" id="remove-external" hidden>Remove external gear</button>
+            </div>
+            <div class="setup-options" id="setup-options"></div>
+          </div>
+        </div>
+
+        <aside class="inspector" aria-labelledby="inspector-title">
+          <div class="inspector-sticky">
+            <p class="eyebrow" id="component-role">Source</p>
+            <h2 id="inspector-title">Computer</h2>
+            <p id="component-body">Your computer runs your music app and starts the chain.</p>
+            <dl class="connection-note">
+              <div>
+                <dt>Connects</dt>
+                <dd id="component-connects">Straight to the headphones through its headphone jack.</dd>
+              </div>
+              <div>
+                <dt>Functions here</dt>
+                <dd id="component-functions">Source · DAC · amplifier</dd>
+              </div>
+            </dl>
+            <div class="need-list">
+              <p class="eyebrow">What you need</p>
+              <h3 id="need-title">Built-in output setup</h3>
+              <ul id="need-items"></ul>
+              <p class="compatibility-note">These are teaching examples. Confirm ports, plugs, and compatibility for your own devices.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="learn" id="learn" aria-labelledby="learn-title">
+      <div class="learn-intro">
+        <p class="eyebrow">The practical essentials</p>
+        <h2 id="learn-title">Learn enough to make a good first choice.</h2>
+        <p>Begin with fit, listening environment, and the connections you actually have. Open a topic when you need the next layer.</p>
+      </div>
+      <div class="lesson-list" id="lesson-list"></div>
+    </section>
+
+    <section class="references" aria-labelledby="references-title">
+      <p class="eyebrow">Read further</p>
+      <h2 id="references-title">References</h2>
+      <p>Primary technical and manufacturer documentation used to check the guide.</p>
+      <ul id="reference-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand">
+      <svg aria-hidden="true" viewBox="0 0 48 48"><path d="M8 8c8 1 13 5 16 12C27 13 32 9 40 8c0 9-4 15-11 18l4 3-4 11H19l-4-11 4-3C12 23 8 17 8 8Z"/><path d="M17 19c3 1 5 4 7 8 2-4 4-7 7-8"/></svg>
+      <span>CAPRA <b>AUDIO</b></span>
+    </div>
+    <p>A plain-language starting point for wired headphone listening.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
