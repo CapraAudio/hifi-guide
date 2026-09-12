@@ -14,6 +14,8 @@ const els = {
   changeNotice: document.querySelector("#change-notice"),
   removeExternal: document.querySelector("#remove-external"),
   reset: document.querySelector("#reset"),
+  themeToggle: document.querySelector("#theme-toggle"),
+  themeColor: document.querySelector('meta[name="theme-color"]'),
   sourceLayer: document.querySelector("#source-layer"),
   gearLayer: document.querySelector("#gear-layer"),
   headphonesLayer: document.querySelector("#headphones-layer"),
@@ -31,6 +33,17 @@ const els = {
   lessonList: document.querySelector("#lesson-list"),
   referenceList: document.querySelector("#reference-list"),
 };
+
+function setTheme(theme, remember = true) {
+  document.documentElement.dataset.theme = theme;
+  const dark = theme === "dark";
+  els.themeToggle.setAttribute("aria-pressed", String(dark));
+  els.themeToggle.setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} mode`);
+  els.themeColor.setAttribute("content", dark ? "#111014" : "#f5f2ed");
+  if (remember) {
+    try { localStorage.setItem("capra-theme", theme); } catch (_) {}
+  }
+}
 
 const functionLabels = {
   source: () => state.setup === "builtin" ? "Source · DAC · amplifier" : "Source",
@@ -398,6 +411,10 @@ els.removeExternal.addEventListener("click", () => {
 });
 
 els.reset.addEventListener("click", reset);
+els.themeToggle.addEventListener("click", () => {
+  setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+});
 
 renderReading();
+setTheme(document.documentElement.dataset.theme || "light", false);
 render();

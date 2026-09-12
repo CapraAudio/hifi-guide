@@ -2,6 +2,8 @@
 
 An interactive, plain-language guide to building a first wired headphone setup. It covers built-in headphone outputs, USB dongles, combined desktop DAC/amplifiers, and separate DAC and amplifier systems.
 
+The interface includes light and dark themes. It follows the visitor's system preference on first load and remembers a manual choice in local browser storage.
+
 ## Preview locally
 
 No build step or dependencies are required.
