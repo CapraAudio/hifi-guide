@@ -4,6 +4,8 @@ An interactive, plain-language guide to building a first wired headphone setup. 
 
 The interface includes light and dark themes. It follows the visitor's system preference on first load and remembers a manual choice in local browser storage.
 
+The reusable visual rules are documented in [`CAPRA_WEB_THEME.md`](CAPRA_WEB_THEME.md) for use across other Capra webpages and prompts.
+
 ## Preview locally
 
 No build step or dependencies are required.
