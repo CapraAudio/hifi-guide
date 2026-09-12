@@ -113,7 +113,11 @@ html[data-theme="dark"] .theme-toggle .moon-icon { opacity: 0; transform: rotate
   font-weight: 800;
 }
 
-.brand svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.brand-mark { position: relative; display: inline-block; flex: 0 0 auto; width: 34px; height: 30px; }
+.brand-mark img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.brand-mark .logo-dark { display: none; }
+html[data-theme="dark"] .brand-mark .logo-light { display: none; }
+html[data-theme="dark"] .brand-mark .logo-dark { display: block; }
 .brand b { color: var(--purple-dark); }
 
 nav { display: flex; gap: 26px; font-size: .78rem; font-weight: 750; }
@@ -387,6 +391,7 @@ footer {
   background: var(--ink);
 }
 .footer-brand b { color: var(--lavender); }
+.footer-mark img { display: block; }
 footer p { margin: 0; color: #aaa3af; font-size: .72rem; }
 
 html[data-theme="dark"] .site-header { border-bottom-color: rgba(255, 255, 255, .14); }

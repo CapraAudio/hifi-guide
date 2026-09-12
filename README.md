@@ -20,6 +20,7 @@ Open `http://localhost:8080` in a browser.
 - `styles.css` contains the responsive layout, illustration styling, and accessible interaction states.
 - `content.js` contains setup definitions, component explanations, lessons, and references.
 - `app.js` manages the guide state and derives the scene, controls, signal path, and equipment list.
+- `assets/` contains the official Capra logo variants used by the theme and favicon.
 
 Keep setup definitions internally consistent: each arrangement declares its required output, visible components, signal-chain order, and equipment list. Technical claims should remain neutral and be checked against primary documentation.
 
