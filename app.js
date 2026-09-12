@@ -39,7 +39,8 @@ function setTheme(theme, remember = true) {
   const dark = theme === "dark";
   els.themeToggle.setAttribute("aria-pressed", String(dark));
   els.themeToggle.setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} mode`);
-  els.themeColor.setAttribute("content", dark ? "#111014" : "#f5f2ed");
+  els.themeToggle.querySelector(".theme-label").textContent = dark ? "LIGHT" : "DARK";
+  els.themeColor.setAttribute("content", dark ? "#11110f" : "#f4f1ea");
   if (remember) {
     try { localStorage.setItem("capra-theme", theme); } catch (_) {}
   }
@@ -102,7 +103,7 @@ function dongleGraphic() {
       <rect x="26" y="0" width="105" height="48" rx="13" fill="url(#purpleMetal)" stroke="#c6a5f5"/>
       <rect x="130" y="15" width="18" height="18" rx="3" fill="#17151b" stroke="#79717d"/>
       <circle class="led" cx="45" cy="24" r="3"/>
-      <text x="61" y="28" fill="#f3eaff" font-size="10" font-weight="800" letter-spacing="1">USB DAC</text>
+      <text x="61" y="28" fill="#f3eaff" font-size="10" font-weight="700" letter-spacing="1">USB DAC</text>
     </g>
     ${deviceLabel(18, -62, 119, "USB dongle", "DAC + amp")}
   </g>`;
